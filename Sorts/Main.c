@@ -142,7 +142,7 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     begin = clock();
     counting_sort(arr, size);
     end = clock();
-    printf("> Подсчётом:                     t = %f сек., корректность - %s, сравнений - 0, замен - 0\n",
+    printf("> Подсчётом:                     t = %f сек., корректность - %s, сравнений - (*), замен - (*)\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size));
 
     //Быстрая (Quick sort)
