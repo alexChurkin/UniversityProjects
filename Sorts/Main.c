@@ -1,4 +1,4 @@
-﻿#include "sort.h"
+#include "sort.h"
 #include "helpers.h"
 
 void demonstrate_all(int* arr, int* tmp_arr, int size);
