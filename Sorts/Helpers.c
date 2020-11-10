@@ -11,9 +11,9 @@ char* is_sorted(int arr[], int size)
     for (i = 1; i < size; i++)
     {
         if (arr[i - 1] > arr[i])
-            return "ÍÅÒ!!!";
+            return "ÐÐ•Ð¢!!!";
     }
-    return "ÄÀ";
+    return "Ð”Ð";
 }
 
 int* create_empty_array(int size)
@@ -23,7 +23,7 @@ int* create_empty_array(int size)
 
 void print_array(int arr[], int size, bool not_big)
 {
-    //Íå ïå÷àòàåì íà ýêðàí ìàññèâ ñëèøêîì áîëüøîãî ðàçìåðà!
+    //ÐÐµ Ð¿ÐµÑ‡Ð°Ñ‚Ð°ÐµÐ¼ Ð½Ð° ÑÐºÑ€Ð°Ð½ Ð¼Ð°ÑÑÐ¸Ð² ÑÐ»Ð¸ÑˆÐºÐ¾Ð¼ Ð±Ð¾Ð»ÑŒÑˆÐ¾Ð³Ð¾ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð°!
     if (not_big && size > 150)
         return;
 
@@ -39,7 +39,7 @@ void populate_array(int arr[], int size)
 {
     if (size <= 5)
     {
-        printf("Ââåäèòå %i ÷èñåë\n", size);
+        printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ %i Ñ‡Ð¸ÑÐµÐ»\n", size);
         for (int i = 0; i < size; i++)
             scanf("%i", &arr[i]);
     }
@@ -47,9 +47,9 @@ void populate_array(int arr[], int size)
     {
         int range_min, range_max;
         srand((unsigned int)time(NULL));
-        printf("Ââåäèòå ìèíèìàëüíîå çíà÷åíèå: ");
+        printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¼Ð¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: ");
         scanf("%i", &range_min);
-        printf("Ââåäèòå ìàêñèìàëüíîå çíà÷åíèå: ");
+        printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ: ");
         scanf("%i", &range_max);
         for (int i = 0; i < size; i++)
         {
@@ -57,14 +57,14 @@ void populate_array(int arr[], int size)
                 (RAND_MAX + 1) * (range_max + 1 - range_min) +
                 range_min;
         }
-        printf("Óñïåøíî ñãåíåðèðîâàí íîâûé ìàññèâ.\n");
+        printf("Ð£ÑÐ¿ÐµÑˆÐ½Ð¾ ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð½Ð¾Ð²Ñ‹Ð¹ Ð¼Ð°ÑÑÐ¸Ð².\n");
         print_array(arr, size, true);
     }
 }
 
 int* get_array(int* size)
 {
-    printf("Ââåäèòå ðàçìåð íîâîãî ìàññèâà: ");
+    printf("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ð¼Ð°ÑÑÐ¸Ð²Ð°: ");
     scanf("%i", size);
     int* arr = create_empty_array(*size);
     populate_array(arr, *size);
