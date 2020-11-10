@@ -157,3 +157,8 @@ void merge_sorted_parts(
     }
     free(temp_arr);
 }
+
+float t_diff(time_t begin, time_t end)
+{
+    return ((float)(end - begin) / CLOCKS_PER_SEC);
+}

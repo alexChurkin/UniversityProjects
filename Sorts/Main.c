@@ -124,7 +124,7 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     shaker_sort(arr, size, &comp_count, &swap_count);
     end = clock();
     printf("> Шейкерная:                     t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
-        ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
+        t_diff(begin, end), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
     //Выбором
@@ -132,7 +132,7 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     selection_sort(arr, size, &comp_count, &swap_count);
     end = clock();
     printf("> Выбором:                       t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
-        ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
+        t_diff(begin, end), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
     //Вставками с лин. поиском
@@ -140,7 +140,7 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     insertion_sort(arr, size, &comp_count, &swap_count, 1);
     end = clock();
     printf("> Вставками 1 (с лин. поиском):  t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
-        ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
+        t_diff(begin, end), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
     //Вставками с бин. поиском
@@ -148,7 +148,7 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     insertion_sort(arr, size, &comp_count, &swap_count, 2);
     end = clock();
     printf("> Вставками 2 (с бин. поиском):  t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
-        ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
+        t_diff(begin, end), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
     //Подсчётом
@@ -156,7 +156,7 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     counting_sort(arr, size);
     end = clock();
     printf("> Подсчётом:                     t = %f сек., корректность - %s, сравнений - (*), замен - (*)\n",
-        ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size));
+        t_diff(begin, end), is_sorted(arr, size));
 
     //Быстрая (Quick sort)
     begin = clock();
@@ -165,7 +165,7 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     quick_sort(arr, 0, size - 1, &comp_count, &swap_count);
     end = clock();
     printf("> Быстрая сортировка:            t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
-        ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
+        t_diff(begin, end), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
     //Сортировка слиянием (Merge sort)
@@ -175,6 +175,6 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     merge_sort(arr, 0, size - 1, &comp_count, &swap_count);
     end = clock();
     printf("> Слиянием:                      t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
-        ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
+        t_diff(begin, end), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 }

@@ -19,3 +19,4 @@ void swap(int* a, int* b);
 int get_min_index(int arr[], int size);
 int get_max_index(int arr[], int size);
 void merge_sorted_parts(int arr[], int l, int c, int r, int* comp_count, int* swap_count);
+float t_diff(time_t begin, time_t end);
