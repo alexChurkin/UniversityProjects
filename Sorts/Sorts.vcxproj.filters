@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Исходные файлы\Helpers">
-      <UniqueIdentifier>{2cdcc79d-0dc3-44d6-a7e8-66770745f8ab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\Search">
-      <UniqueIdentifier>{e15e7393-a29d-42cd-b29a-959b99dfe217}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Исходные файлы\Sort">
       <UniqueIdentifier>{8b711a22-27a7-48a4-b42d-d2e27e4c9e79}</UniqueIdentifier>
     </Filter>
@@ -27,31 +21,31 @@
     <ClCompile Include="Main.c">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Helpers.c">
-      <Filter>Исходные файлы\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Search.c">
-      <Filter>Исходные файлы\Search</Filter>
-    </ClCompile>
     <ClCompile Include="Sort.c">
       <Filter>Исходные файлы\Sort</Filter>
     </ClCompile>
     <ClCompile Include="SortHelper.c">
       <Filter>Исходные файлы\Sort</Filter>
     </ClCompile>
+    <ClCompile Include="Helpers.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Search.c">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h">
-      <Filter>Исходные файлы\Helpers</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="search.h">
-      <Filter>Исходные файлы\Search</Filter>
-    </ClInclude>
-    <ClInclude Include="sort.h">
-      <Filter>Исходные файлы\Sort</Filter>
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="sorthelper.h">
-      <Filter>Исходные файлы\Sort</Filter>
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="sort.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
