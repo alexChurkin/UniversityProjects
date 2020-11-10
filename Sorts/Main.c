@@ -5,20 +5,20 @@ void demonstrate_all(int* arr, int* tmp_arr, int size);
 
 void print_menu()
 {
-    printf("Р”РѕСЃС‚СѓРїРЅС‹Рµ РєРѕРјР°РЅРґС‹:\n");
+    printf("Доступные команды:\n");
     printf("---------------------------\n");
-    printf("1. РЎРѕР·РґР°С‚СЊ/РїРµСЂРµСЃРѕР·РґР°С‚СЊ РјР°СЃСЃРёРІ\n");
-    printf("2. РћС‚РѕР±СЂР°Р·РёС‚СЊ С‚РµРєСѓС‰РёР№ РјР°СЃСЃРёРІ\n");
-    printf("3. <РџСЂРѕРёР·РІРµСЃС‚Рё С€РµР№РєРµСЂРЅСѓСЋ СЃРѕСЂС‚РёСЂРѕРІРєСѓ>\n");
-    printf("4. <РџСЂРѕРёР·РІРµСЃС‚Рё СЃРѕСЂС‚РёСЂРѕРІРєСѓ РІС‹Р±РѕСЂРѕРј>\n");
-    printf("5. <РџСЂРѕРёР·РІРµСЃС‚Рё СЃРѕСЂС‚РёСЂРѕРІРєСѓ РІСЃС‚Р°РІРєР°РјРё>\n");
-    printf("6. <РџСЂРѕРёР·РІРµСЃС‚Рё СЃРѕСЂС‚РёСЂРѕРІРєСѓ РїРѕРґСЃС‡С‘С‚РѕРј>\n");
-    printf("7. <РџСЂРѕРёР·РІРµСЃС‚Рё Р±С‹СЃС‚СЂСѓСЋ СЃРѕСЂС‚РёСЂРѕРІРєСѓ>\n");
-    printf("8. <РџСЂРѕРёР·РІРµСЃС‚Рё СЃРѕСЂС‚РёСЂРѕРІРєСѓ СЃР»РёСЏРЅРёРµРј>\n");
-    printf("9. <<<РЎСЂР°РІРЅРёС‚СЊ СЃРєРѕСЂРѕСЃС‚СЊ РІСЃРµС… РґРѕСЃС‚СѓРїРЅС‹С… СЃРѕСЂС‚РёСЂРѕРІРѕРє>>>\n");
+    printf("1. Создать/пересоздать массив\n");
+    printf("2. Отобразить текущий массив\n");
+    printf("3. <Произвести шейкерную сортировку>\n");
+    printf("4. <Произвести сортировку выбором>\n");
+    printf("5. <Произвести сортировку вставками>\n");
+    printf("6. <Произвести сортировку подсчётом>\n");
+    printf("7. <Произвести быструю сортировку>\n");
+    printf("8. <Произвести сортировку слиянием>\n");
+    printf("9. <<<Сравнить скорость всех доступных сортировок>>>\n");
     printf("---------------------------\n");
-    printf("10. РћС‚РѕР±СЂР°Р·РёС‚СЊ РјРµРЅСЋ РєРѕРјР°РЅРґ\n");
-    printf("0. Р—Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ\n");
+    printf("10. Отобразить меню команд\n");
+    printf("0. Завершить программу\n");
     printf("---------------------------\n\n");
 }
 
@@ -42,7 +42,7 @@ void main()
         switch (menu_number)
         {
         case 0:
-            printf("\nР—Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹.");
+            printf("\nЗавершение программы.");
             return;
         case 1:
             free(arr);
@@ -55,42 +55,42 @@ void main()
             break;
         case 3:
             shaker_sort(arr, size, &comp_count, &swap_count);
-            printf("РЁРµР№РєРµСЂРЅР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°:\n");
+            printf("Шейкерная сортировка:\n");
             print_array(arr, size, false);
-            printf("РљРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+            printf("Корректность - %s, сравнений - %i, замен - %i\n",
                 is_sorted(arr, size), comp_count, swap_count);
             recover_old_array(arr, tmp_arr, size);
             break;
         case 4:
             selection_sort(arr, size, &comp_count, &swap_count);
-            printf("РЎРѕСЂС‚РёСЂРѕРІРєР° РІС‹Р±РѕСЂРѕРј:\n");
+            printf("Сортировка выбором:\n");
             print_array(arr, size, false);
-            printf("РљРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+            printf("Корректность - %s, сравнений - %i, замен - %i\n",
                 is_sorted(arr, size), comp_count, swap_count);
             recover_old_array(arr, tmp_arr, size);
             break;
         case 5:
             insertion_sort(arr, size, &comp_count, &swap_count, 2);
-            printf("РЎРѕСЂС‚РёСЂРѕРІРєР° РІСЃС‚Р°РІРєР°РјРё (СЃ Р±РёРЅ. РїРѕРёСЃРєРѕРј):\n");
+            printf("Сортировка вставками (с бин. поиском):\n");
             print_array(arr, size, false);
-            printf("РљРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+            printf("Корректность - %s, сравнений - %i, замен - %i\n",
                 is_sorted(arr, size), comp_count, swap_count);
             recover_old_array(arr, tmp_arr, size);
             break;
         case 6:
             counting_sort(arr, size);
-            printf("РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕРґСЃС‡С‘С‚РѕРј:\n");
+            printf("Сортировка подсчётом:\n");
             print_array(arr, size, false);
-            printf("РљРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s\n", is_sorted(arr, size));
+            printf("Корректность - %s\n", is_sorted(arr, size));
             recover_old_array(arr, tmp_arr, size);
             break;
         case 7:
             comp_count = 0;
             swap_count = 0;
             quick_sort(arr, 0, size - 1, &comp_count, &swap_count);
-            printf("Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°:\n");
+            printf("Быстрая сортировка:\n");
             print_array(arr, size, false);
-            printf("РљРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+            printf("Корректность - %s, сравнений - %i, замен - %i\n",
                 is_sorted(arr, size), comp_count, swap_count);
             recover_old_array(arr, tmp_arr, size);
             break;
@@ -98,9 +98,9 @@ void main()
             comp_count = 0;
             swap_count = 0;
             merge_sort(arr, 0, size - 1, &comp_count, &swap_count);
-            printf("РЎРѕСЂС‚РёСЂРѕРІРєР° СЃР»РёСЏРЅРёРµРј:\n");
+            printf("Сортировка слиянием:\n");
             print_array(arr, size, false);
-            printf("РљРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+            printf("Корректность - %s, сравнений - %i, замен - %i\n",
                 is_sorted(arr, size), comp_count, swap_count);
             recover_old_array(arr, tmp_arr, size);
             break;
@@ -119,62 +119,62 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     time_t begin, end;
     int comp_count, swap_count;
 
-    //РЁРµР№РєРµСЂРЅР°СЏ
+    //Шейкерная
     begin = clock();
     shaker_sort(arr, size, &comp_count, &swap_count);
     end = clock();
-    printf("> РЁРµР№РєРµСЂРЅР°СЏ:                     t = %f СЃРµРє., РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+    printf("> Шейкерная:                     t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
-    //Р’С‹Р±РѕСЂРѕРј
+    //Выбором
     begin = clock();
     selection_sort(arr, size, &comp_count, &swap_count);
     end = clock();
-    printf("> Р’С‹Р±РѕСЂРѕРј:                       t = %f СЃРµРє., РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+    printf("> Выбором:                       t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
-    //Р’СЃС‚Р°РІРєР°РјРё СЃ Р»РёРЅ. РїРѕРёСЃРєРѕРј
+    //Вставками с лин. поиском
     begin = clock();
     insertion_sort(arr, size, &comp_count, &swap_count, 1);
     end = clock();
-    printf("> Р’СЃС‚Р°РІРєР°РјРё 1 (СЃ Р»РёРЅ. РїРѕРёСЃРєРѕРј):  t = %f СЃРµРє., РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+    printf("> Вставками 1 (с лин. поиском):  t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
-    //Р’СЃС‚Р°РІРєР°РјРё СЃ Р±РёРЅ. РїРѕРёСЃРєРѕРј
+    //Вставками с бин. поиском
     begin = clock();
     insertion_sort(arr, size, &comp_count, &swap_count, 2);
     end = clock();
-    printf("> Р’СЃС‚Р°РІРєР°РјРё 2 (СЃ Р±РёРЅ. РїРѕРёСЃРєРѕРј):  t = %f СЃРµРє., РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+    printf("> Вставками 2 (с бин. поиском):  t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
-    //РџРѕРґСЃС‡С‘С‚РѕРј
+    //Подсчётом
     begin = clock();
     counting_sort(arr, size);
     end = clock();
-    printf("> РџРѕРґСЃС‡С‘С‚РѕРј:                     t = %f СЃРµРє., РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - (*), Р·Р°РјРµРЅ - (*)\n",
+    printf("> Подсчётом:                     t = %f сек., корректность - %s, сравнений - (*), замен - (*)\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size));
 
-    //Р‘С‹СЃС‚СЂР°СЏ (Quick sort)
+    //Быстрая (Quick sort)
     begin = clock();
     comp_count = 0;
     swap_count = 0;
     quick_sort(arr, 0, size - 1, &comp_count, &swap_count);
     end = clock();
-    printf("> Р‘С‹СЃС‚СЂР°СЏ СЃРѕСЂС‚РёСЂРѕРІРєР°:            t = %f СЃРµРє., РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+    printf("> Быстрая сортировка:            t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 
-    //РЎРѕСЂС‚РёСЂРѕРІРєР° СЃР»РёСЏРЅРёРµРј (Merge sort)
+    //Сортировка слиянием (Merge sort)
     begin = clock();
     comp_count = 0;
     swap_count = 0;
     merge_sort(arr, 0, size - 1, &comp_count, &swap_count);
     end = clock();
-    printf("> РЎР»РёСЏРЅРёРµРј:                      t = %f СЃРµРє., РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ - %s, СЃСЂР°РІРЅРµРЅРёР№ - %i, Р·Р°РјРµРЅ - %i\n",
+    printf("> Слиянием:                      t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 }
