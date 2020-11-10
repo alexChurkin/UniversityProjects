@@ -151,3 +151,13 @@ void quick_sort(int arr[], int first, int last, int* comp_count, int* swap_count
 	if (i < last)
 		quick_sort(arr, i, last, comp_count, swap_count);
 }
+
+void merge_sort(int arr[], int l, int r, int* comp_count, int* swap_count)
+{
+	if (l == r)
+		return;
+	int c = (l + r) / 2;
+	merge_sort(arr, l, c, comp_count, swap_count);
+	merge_sort(arr, c + 1, r, comp_count, swap_count);
+	merge_sorted_parts(arr, l, c, r, comp_count, swap_count);
+}

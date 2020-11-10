@@ -14,7 +14,8 @@ void print_menu()
     printf("5. <Произвести сортировку вставками>\n");
     printf("6. <Произвести сортировку подсчётом>\n");
     printf("7. <Произвести быструю сортировку>\n");
-    printf("8. <<<Сравнить скорость всех доступных сортировок>>>\n");
+    printf("8. <Произвести сортировку слиянием>\n");
+    printf("9. <<<Сравнить скорость всех доступных сортировок>>>\n");
     printf("---------------------------\n");
     printf("10. Отобразить меню команд\n");
     printf("0. Завершить программу\n");
@@ -84,6 +85,8 @@ void main()
             recover_old_array(arr, tmp_arr, size);
             break;
         case 7:
+            comp_count = 0;
+            swap_count = 0;
             quick_sort(arr, 0, size - 1, &comp_count, &swap_count);
             printf("Быстрая сортировка:\n");
             print_array(arr, size, false);
@@ -92,6 +95,16 @@ void main()
             recover_old_array(arr, tmp_arr, size);
             break;
         case 8:
+            comp_count = 0;
+            swap_count = 0;
+            merge_sort(arr, 0, size - 1, &comp_count, &swap_count);
+            printf("Сортировка слиянием:\n");
+            print_array(arr, size, false);
+            printf("Корректность - %s, сравнений - %i, замен - %i\n",
+                is_sorted(arr, size), comp_count, swap_count);
+            recover_old_array(arr, tmp_arr, size);
+            break;
+        case 9:
             demonstrate_all(arr, tmp_arr, size);
             break;
         case 10:
@@ -152,6 +165,16 @@ void demonstrate_all(int* arr, int* tmp_arr, int size)
     quick_sort(arr, 0, size - 1, &comp_count, &swap_count);
     end = clock();
     printf("> Быстрая сортировка:            t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
+        ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
+    recover_old_array(arr, tmp_arr, size);
+
+    //Сортировка слиянием (Merge sort)
+    begin = clock();
+    comp_count = 0;
+    swap_count = 0;
+    merge_sort(arr, 0, size - 1, &comp_count, &swap_count);
+    end = clock();
+    printf("> Слиянием:                      t = %f сек., корректность - %s, сравнений - %i, замен - %i\n",
         ((float)(end - begin) / CLOCKS_PER_SEC), is_sorted(arr, size), comp_count, swap_count);
     recover_old_array(arr, tmp_arr, size);
 }

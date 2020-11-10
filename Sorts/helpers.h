@@ -18,3 +18,4 @@ void recover_old_array(int* arr, int* tmp_arr, int size);
 void swap(int* a, int* b);
 int get_min_index(int arr[], int size);
 int get_max_index(int arr[], int size);
+void merge_sorted_parts(int arr[], int l, int c, int r, int* comp_count, int* swap_count);
