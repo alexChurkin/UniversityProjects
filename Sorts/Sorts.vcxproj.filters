@@ -36,6 +36,9 @@
     <ClCompile Include="Sort.c">
       <Filter>Исходные файлы\Sort</Filter>
     </ClCompile>
+    <ClCompile Include="SortHelper.c">
+      <Filter>Исходные файлы\Sort</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h">
@@ -45,6 +48,9 @@
       <Filter>Исходные файлы\Search</Filter>
     </ClInclude>
     <ClInclude Include="sort.h">
+      <Filter>Исходные файлы\Sort</Filter>
+    </ClInclude>
+    <ClInclude Include="sorthelper.h">
       <Filter>Исходные файлы\Sort</Filter>
     </ClInclude>
   </ItemGroup>

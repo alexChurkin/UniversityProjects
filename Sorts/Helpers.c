@@ -21,23 +21,28 @@ int* create_empty_array(int size)
     return (int*)malloc(size * sizeof(int));
 }
 
-void print_array(int arr[], int size, bool not_big)
+void print_array(int arr[], int size)
 {
-    //Не печатаем на экран массив слишком большого размера!
-    if (not_big && size > 150)
-        return;
-
     printf("[");
-    for (int i = 0; i < size - 1; i++)
+    if (size <= 50)
     {
-        printf("%i ", arr[i]);
+        for (int i = 0; i < size - 1; i++)
+            printf("%i, ", arr[i]);
+    }
+    else
+    {
+        for (int i = 0; i < 10; i++)
+            printf("%i, ", arr[i]);
+        printf("... , ");
+        for (int i = size - 10; i < size - 1; i++)
+            printf("%i, ", arr[i]);
     }
     printf("%i]\n", arr[size - 1]);
 }
 
 void populate_array(int arr[], int size)
 {
-    if (size <= 5)
+    if (size <= 6)
     {
         printf("Введите %i чисел\n", size);
         for (int i = 0; i < size; i++)
@@ -94,68 +99,6 @@ void swap(int* a, int* b)
     int c = *a;
     *a = *b;
     *b = c;
-}
-
-int get_min_index(int arr[], int size)
-{
-    int index = 0, i;
-    for (int i = 0; i < size; i++)
-        if (arr[i] < arr[index])
-            index = i;
-    return index;
-}
-
-int get_max_index(int arr[], int size)
-{
-    int index = 0, i;
-    for (int i = 0; i < size; i++)
-        if (arr[i] > arr[index])
-            index = i;
-    return index;
-}
-
-void merge_sorted_parts(
-    int arr[], int l, int c, int r, int* comp_count, int* swap_count)
-{
-    int i = l,
-        j = c + 1,
-        t = 0;
-    int* temp_arr;
-    temp_arr = (int*)malloc((r - l + 1) * sizeof(int));
-
-    while (i <= c && j <= r)
-    {
-        (*comp_count)++;
-        if (arr[i] <= arr[j])
-        {
-            temp_arr[t] = arr[i], i++;
-        }
-        else
-        {
-            temp_arr[t] = arr[j], j++;
-        }
-        t++;
-    }
-
-    while (i <= c)
-    {
-        temp_arr[t] = arr[i];
-        t++;
-        i++;
-    }
-    while (j <= r)
-    {
-        temp_arr[t] = arr[j];
-        t++;
-        j++;
-    }
-
-    for (int i = l; i <= r; i++)
-    {
-        (*swap_count)++;
-        arr[i] = temp_arr[i - l];
-    }
-    free(temp_arr);
 }
 
 float t_diff(time_t begin, time_t end)

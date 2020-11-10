@@ -23,11 +23,13 @@
     <ClCompile Include="Main.c" />
     <ClCompile Include="Search.c" />
     <ClCompile Include="Sort.c" />
+    <ClCompile Include="SortHelper.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helpers.h" />
     <ClInclude Include="search.h" />
     <ClInclude Include="sort.h" />
+    <ClInclude Include="sorthelper.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -1,5 +1,5 @@
 #include "helpers.h"
-#include "search.h"
+#include "sorthelper.h"
 
 void shaker_sort(int arr[], int size, int* comp_count, int* swap_count)
 {
@@ -45,20 +45,21 @@ void selection_sort(int arr[], int size, int* comp_count, int* swap_count)
 	for (i = 0; i < size; i++)
 	{
 		pos = i;
-		//Находим позицию минимального эл-та в неотсортированной части массива
+		//Нахождение позиции минимального эл-та в неотсортированной части массива
 		for (j = i; j < size; j++)
 		{
 			(*comp_count)++;
 			if (arr[j] < arr[pos])
 				pos = j;
 		}
-		//Перемещаем его в конец отсортированной части
+		//Перемещение минимального эл-та в конец отсортированной части
 		(*swap_count)++;
 		swap(&arr[pos], &arr[i]);
 	}
 }
 
-void insertion_sort(int arr[], int size, int* comp_count, int* swap_count, int mode)
+void insertion_sort(int arr[], int size,
+	int* comp_count, int* swap_count, int mode)
 {
 	int i, j, pos, tmp;
 	(*comp_count) = 0;
@@ -108,13 +109,12 @@ void counting_sort(int arr[], int size)
 	free(count);
 }
 
-void quick_sort(int arr[], int first, int last, int* comp_count, int* swap_count)
+void quick_sort(int arr[], int first, int last,
+	int* comp_count, int* swap_count)
 {
-	//Если длина сортируемой части меньше 2-х (т.е. <= 1) - стоп
-	//if(first < last) - продолжаем
-
 	//Центральный элемент
 	int el = arr[(first + last) / 2];
+
 	int i = first, j = last;
 
 	//Сортировка относительно элемента el справа и слева
@@ -145,17 +145,19 @@ void quick_sort(int arr[], int first, int last, int* comp_count, int* swap_count
 		}
 	}
 
-	//Вариант проверки 1
+	//Проверка на необходимость дальнейшей сортировки
 	if (first < j)
 		quick_sort(arr, first, j, comp_count, swap_count);
 	if (i < last)
 		quick_sort(arr, i, last, comp_count, swap_count);
 }
 
-void merge_sort(int arr[], int l, int r, int* comp_count, int* swap_count)
+void merge_sort(
+	int arr[], int l, int r,
+	int* comp_count, int* swap_count)
 {
-	if (l == r)
-		return;
+	if (l == r) return;
+
 	int c = (l + r) / 2;
 	merge_sort(arr, l, c, comp_count, swap_count);
 	merge_sort(arr, c + 1, r, comp_count, swap_count);
