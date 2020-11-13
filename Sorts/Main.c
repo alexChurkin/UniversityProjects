@@ -188,6 +188,7 @@ void demonstrate_sorts(int* arr, int* tmp_arr, int size)
     end = clock();
     printf("> Подсчётом:                     t = %f сек., корректность - %s\n",
         t_diff(begin, end), is_sorted(arr, size));
+    recover_old_array(arr, tmp_arr, size);
 
     //Быстрая
     begin = clock();
