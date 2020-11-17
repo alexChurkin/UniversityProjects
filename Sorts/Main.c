@@ -7,7 +7,7 @@ void demonstrate_sorts(int* arr, int* tmp_arr, int size);
 
 void print_menu()
 {
-    printf("Доступные команды:\n");
+    printf("Меню\n");
     printf("---------------------------\n");
     printf("1.  Создать/пересоздать массив\n");
     printf("2.  Отобразить текущий массив\n");
@@ -18,7 +18,7 @@ void print_menu()
     printf("7.  <Произвести быструю сортировку>\n");
     printf("8.  <Произвести сортировку слиянием>\n");
     printf("9.  <<<Сравнить скорость всех доступных сортировок>>>\n");
-    printf("10. <<Найти элемент в отсортированном массиве>>\n");
+    printf("10. <<Найти элемент (в уже отсортированном массиве)>>\n");
     printf("---------------------------\n");
     printf("11. Отобразить меню команд\n");
     printf("0. Завершить программу\n");
@@ -130,17 +130,23 @@ void demonstrate_search(int* arr, int* tmp_arr, int size) {
     quick_sort(arr, 0, size - 1, &comp_count, &swap_count);
     printf("Отсортированный массив:\n");
     print_array(arr, size);
+    printf("\n");
 
-    int lin = linear_search(arr, size, element);
-    int bin = binary_search(arr, size, element);
+    int lin_iter = 0;
+    int lin_pos = linear_search(arr, size, element, &lin_iter);
+
+    int bin_iter = 0;
+    int bin_pos = binary_search(arr, size, element, &bin_iter);
 
     printf("Результат линейного поиска: ");
-    if (lin != -1) printf("элемент есть в массиве\n");
+    if (lin_pos != -1) printf("элемент найден в массиве (позиция %i)\n", lin_pos);
     else printf("элемент не найден!\n");
+    printf("Итераций: %i\n\n", lin_iter);
 
     printf("Результат бинарного поиска: ");
-    if (bin != -1) printf("элемент есть в массиве\n");
+    if (bin_pos != -1) printf("элемент найден в массиве (позиция %i)\n", bin_pos);
     else printf("элемент не найден!\n");
+    printf("Итераций: %i\n", bin_iter);
 
     recover_old_array(arr, tmp_arr, size);
 }
