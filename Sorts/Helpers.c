@@ -62,7 +62,7 @@ void populate_array(int arr[], int size)
 				(RAND_MAX + 1) * (range_max + 1 - range_min) +
 				range_min;
 		}
-		printf("Успешно сгенерирован новый массив.\n");
+		printf("Успешно сгенерирован новый массив:\n");
 		print_array(arr, size, true);
 	}
 }

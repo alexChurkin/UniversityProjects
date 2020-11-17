@@ -135,11 +135,11 @@ void demonstrate_search(int* arr, int* tmp_arr, int size) {
     int bin = binary_search(arr, size, element);
 
     printf("Результат линейного поиска: ");
-    if (lin != -1) printf("элемент найден на позиции %i\n", lin);
+    if (lin != -1) printf("элемент есть в массиве\n");
     else printf("элемент не найден!\n");
 
     printf("Результат бинарного поиска: ");
-    if (bin != -1) printf("элемент найден на позиции %i\n", bin);
+    if (bin != -1) printf("элемент есть в массиве\n");
     else printf("элемент не найден!\n");
 
     recover_old_array(arr, tmp_arr, size);
