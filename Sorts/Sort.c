@@ -69,7 +69,7 @@ void insertion_sort(int arr[], int size,
 	{
 		pos = (mode == 1) ? find_insert_position_linearly(arr, i, comp_count)
 			: find_insert_position_binary(arr, i, comp_count);
-		//Сдвигаем все элементы от конца к началу
+		//Сдвигаем все элементы от i-го
 		tmp = arr[i];
 		for (j = i; j > pos; j--)
 		{
