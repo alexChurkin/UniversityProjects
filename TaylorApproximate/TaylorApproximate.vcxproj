@@ -141,11 +141,12 @@
   <ItemGroup>
     <ClCompile Include="Functions.c" />
     <ClCompile Include="Main.c" />
-    <ClCompile Include="RangeTable.c" />
+    <ClCompile Include="RangePrinter.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h" />
-    <ClInclude Include="rangetable.h" />
+    <ClInclude Include="input_struct.h" />
+    <ClInclude Include="rangeprinter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

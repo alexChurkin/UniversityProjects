@@ -16,7 +16,7 @@
     <Filter Include="Исходные файлы\Formulas">
       <UniqueIdentifier>{ba8eb3a3-ed77-4657-82c1-83e1cf28915a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\RangeTable">
+    <Filter Include="Исходные файлы\RangePrinter">
       <UniqueIdentifier>{bd9d251d-c449-4e48-a764-c8f7a3d37874}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -27,16 +27,19 @@
     <ClCompile Include="Functions.c">
       <Filter>Исходные файлы\Formulas</Filter>
     </ClCompile>
-    <ClCompile Include="RangeTable.c">
-      <Filter>Исходные файлы\RangeTable</Filter>
+    <ClCompile Include="RangePrinter.c">
+      <Filter>Исходные файлы\RangePrinter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h">
       <Filter>Исходные файлы\Formulas</Filter>
     </ClInclude>
-    <ClInclude Include="rangetable.h">
-      <Filter>Исходные файлы\RangeTable</Filter>
+    <ClInclude Include="input_struct.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="rangeprinter.h">
+      <Filter>Исходные файлы\RangePrinter</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
