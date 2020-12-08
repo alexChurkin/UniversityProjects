@@ -1,10 +1,14 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <locale.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 #include "input_struct.h"
 #include "functions.h"
 #include "tableprinter.h"
+
+void print_menu();
+void fill_input(input *inp);
 
 void main()
 {
@@ -12,36 +16,69 @@ void main()
 	double a, b, step;
 	int n, number;
 
-	printf("Выберите функцию:\n");
-	printf(">1 - exp(x)\n>2 - sin(x)\n>3 - cos(x)\n>4 - log(x)\n");
-	scanf("%i", &number);
-	printf("Введите a (начало отрезка), b (конец отрезка),");
-	printf(" step (шаг), n (кол-во слагаемых):\n");
-	scanf("%lf %lf %lf %d", &a, &b, &step, &n);
+	print_menu();
+	input inp = { 0.0, 0.0, 0.0, 0, NULL, NULL, "" };
+	fill_input(&inp);
 
-	input inp = { a, b, step, n, NULL, NULL, "" };
-	switch (number)
+	while (1)
 	{
-	case 1:
-		inp.func = exp;
-		inp.myfunc = my_exp;
-		inp.f_name = "exp";
-		break;
-	case 2:
-		inp.func = sin;
-		inp.myfunc = my_sin;
-		inp.f_name = "sin";
-		break;
-	case 3:
-		inp.func = cos;
-		inp.myfunc = my_cos;
-		inp.f_name = "cos";
-		break;
-	case 4:
-		inp.func = log;
-		inp.myfunc = my_log;
-		inp.f_name = "log";
-		break;
+		scanf("%i", &number);
+		switch (number)
+		{
+		case 0:
+			printf("\nЗавершение программы.");
+			return;
+		case 1:
+			fill_input(&inp);
+			break;
+		case 2:
+			inp.func = exp;
+			inp.myfunc = my_exp;
+			inp.f_name = "exp";
+			print_table(inp);
+			break;
+		case 3:
+			inp.func = sin;
+			inp.myfunc = my_sin;
+			inp.f_name = "sin";
+			print_table(inp);
+			break;
+		case 4:
+			inp.func = cos;
+			inp.myfunc = my_cos;
+			inp.f_name = "cos";
+			print_table(inp);
+			break;
+		case 5:
+			inp.func = log;
+			inp.myfunc = my_log;
+			inp.f_name = "log";
+			print_table(inp);
+			break;
+		case 10:
+			print_menu();
+			break;
+		}
 	}
-	print_table(inp);
+}
+
+void print_menu()
+{
+	printf("Меню:\n");
+	printf("-----------------------------\n");
+	printf("> 1 - Обновить входные данные\n");
+	printf("--------------------\n");
+	printf("> 2 - exp(x)\n> 3 - sin(x)\n");
+	printf("> 4 - cos(x)\n> 5 - log(x)\n");
+	printf("--------------------\n");
+	printf("> 10 - Показать меню\n");
+	printf("> 0 - Выход\n");
+}
+
+void fill_input(input *inp)
+{
+	printf("\nВведите a (начало отрезка), b (конец отрезка),");
+	printf(" step (шаг), n (кол-во слагаемых):\n");
+	scanf("%lf %lf %lf %d", &(*inp).a, &(*inp).b, 
+		&(*inp).step, &(*inp).n);
 }
