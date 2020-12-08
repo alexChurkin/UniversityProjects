@@ -10,7 +10,7 @@ typedef struct row {
 	double error;
 } row;
 
-void print_range_table(input inp) {
+void print_table(input inp) {
 	row* rows = (row*)malloc(sizeof(row) * 5000);
 
 	int size = 0;
