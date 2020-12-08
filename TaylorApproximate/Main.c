@@ -32,28 +32,36 @@ void main()
 			fill_input(&inp);
 			break;
 		case 2:
-			inp.func = exp;
-			inp.myfunc = my_exp;
-			inp.f_name = "exp";
-			print_table(inp);
+			inp.func = exp; inp.myfunc = my_exp;
+			inp.f_name = "exp"; print_table(inp);
 			break;
 		case 3:
-			inp.func = sin;
-			inp.myfunc = my_sin;
-			inp.f_name = "sin";
-			print_table(inp);
+			inp.func = sin; inp.myfunc = my_sin;
+			inp.f_name = "sin"; print_table(inp);
 			break;
 		case 4:
-			inp.func = cos;
-			inp.myfunc = my_cos;
-			inp.f_name = "cos";
-			print_table(inp);
+			inp.func = cos; inp.myfunc = my_cos;
+			inp.f_name = "cos"; print_table(inp);
 			break;
 		case 5:
-			inp.func = log;
-			inp.myfunc = my_log;
-			inp.f_name = "log";
-			print_table(inp);
+			inp.func = log; inp.myfunc = my_log;
+			inp.f_name = "log"; print_table(inp);
+			break;
+		case 6:
+			inp.func = exp; inp.myfunc = my_improved_exp;
+			inp.f_name = "*exp"; print_table(inp);
+			break;
+		case 7:
+			inp.func = sin; inp.myfunc = my_improved_sin;
+			inp.f_name = "*sin"; print_table(inp);
+			break;
+		case 8:
+			inp.func = cos; inp.myfunc = my_improved_cos;
+			inp.f_name = "*cos"; print_table(inp);
+			break;
+		case 9:
+			inp.func = log; inp.myfunc = my_universal_log;
+			inp.f_name = "*log"; print_table(inp);
 			break;
 		case 10:
 			print_menu();
@@ -70,6 +78,8 @@ void print_menu()
 	printf("--------------------\n");
 	printf("> 2 - exp(x)\n> 3 - sin(x)\n");
 	printf("> 4 - cos(x)\n> 5 - log(x)\n");
+	printf("> 6 - Улучшенный exp(x)\n> 7 - Улучшенный sin(x)\n");
+	printf("> 8 - Улучшенный cos(x)\n> 9 - Универсальный log(x)\n");
 	printf("--------------------\n");
 	printf("> 10 - Показать меню\n");
 	printf("> 0 - Выход\n");
