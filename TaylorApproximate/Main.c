@@ -13,13 +13,11 @@ void fill_input(input *inp);
 void main()
 {
 	setlocale(LC_CTYPE, "rus");
-	double a, b, step;
-	int n, number;
+	int number;
+	input inp = { 0.0, 0.0, 0.0, 0, NULL, NULL, "" };
 
 	print_menu();
-	input inp = { 0.0, 0.0, 0.0, 0, NULL, NULL, "" };
 	fill_input(&inp);
-
 	while (1)
 	{
 		scanf("%i", &number);
