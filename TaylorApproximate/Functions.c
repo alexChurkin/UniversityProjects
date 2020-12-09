@@ -58,7 +58,6 @@ double my_log(double x, int n)
 
 /* .......... Улучшенные версии .......... */
 
-//?
 double my_improved_exp(double x, int n)
 {
 	double y = x;
@@ -66,7 +65,7 @@ double my_improved_exp(double x, int n)
 	while (y > LN_2) {
 		y -= LN_2; k++;
 	}
-	int k2 = 1;
+	double k2 = 1;
 	for (int i = 1; i <= k; i++) {
 		k2 *= 2;
 	}
