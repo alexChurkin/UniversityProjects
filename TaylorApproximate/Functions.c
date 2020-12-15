@@ -42,7 +42,6 @@ double my_cos(double x, int n)
 	return result;
 }
 
-//(Ряд Меркатора)
 double my_log(double x, int n)
 {
 	double result = 0.0, a = --x;
