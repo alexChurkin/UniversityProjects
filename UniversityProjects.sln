@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sorts", "Sorts\Sorts.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaylorApproximate", "TaylorApproximate\TaylorApproximate.vcxproj", "{29002146-4F27-4350-9B7F-8F5A2BD2C176}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GaussMethod", "GaussMethod\GaussMethod.vcxproj", "{6F487A99-9EE7-4BA1-9118-2F3A7436D520}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{29002146-4F27-4350-9B7F-8F5A2BD2C176}.Release|x64.Build.0 = Release|x64
 		{29002146-4F27-4350-9B7F-8F5A2BD2C176}.Release|x86.ActiveCfg = Release|Win32
 		{29002146-4F27-4350-9B7F-8F5A2BD2C176}.Release|x86.Build.0 = Release|Win32
+		{6F487A99-9EE7-4BA1-9118-2F3A7436D520}.Debug|x64.ActiveCfg = Debug|x64
+		{6F487A99-9EE7-4BA1-9118-2F3A7436D520}.Debug|x64.Build.0 = Debug|x64
+		{6F487A99-9EE7-4BA1-9118-2F3A7436D520}.Debug|x86.ActiveCfg = Debug|Win32
+		{6F487A99-9EE7-4BA1-9118-2F3A7436D520}.Debug|x86.Build.0 = Debug|Win32
+		{6F487A99-9EE7-4BA1-9118-2F3A7436D520}.Release|x64.ActiveCfg = Release|x64
+		{6F487A99-9EE7-4BA1-9118-2F3A7436D520}.Release|x64.Build.0 = Release|x64
+		{6F487A99-9EE7-4BA1-9118-2F3A7436D520}.Release|x86.ActiveCfg = Release|Win32
+		{6F487A99-9EE7-4BA1-9118-2F3A7436D520}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -63,7 +63,7 @@ void populate_array(int arr[], int size)
 				range_min;
 		}
 		printf("Успешно сгенерирован новый массив:\n");
-		print_array(arr, size, true);
+		print_array(arr, size);
 	}
 }
 
