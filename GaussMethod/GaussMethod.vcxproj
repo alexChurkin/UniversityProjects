@@ -141,11 +141,11 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GaussTools.cpp" />
-    <ClCompile Include="SystemResolver.cpp" />
+    <ClCompile Include="SystemSolver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gauss_tools.h" />
-    <ClInclude Include="system_resolver.h" />
+    <ClInclude Include="system_solver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

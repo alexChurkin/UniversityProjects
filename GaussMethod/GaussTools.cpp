@@ -10,31 +10,59 @@ double** init_matrix(int n)
     return matrix;
 }
 
+double** copy_matrix(double** A, int n)
+{
+    double** A1 = init_matrix(n);
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            A1[i][j] = A[i][j];
+    return A1;
+}
+
+double* copy_vector(double* b, int n)
+{
+    double* b1 = new double[n];
+    for (int i = 0; i < n; i++)
+        b1[i] = b[i];
+    return b1;
+}
+
 //Вывод системы уравнений на экран
 void print_system(double** A, double* b, int n)
 {
+    cout << fixed;
     for (int i = 0; i < n; i++)
     {
         cout << "|";
         for (int j = 0; j < n; j++) {
-            cout.width(6);
-            cout << A[i][j] << ' ';
+            cout.width(10);
+            cout << setprecision(5)
+                << A[i][j] << ' ';
         }
-        cout.width(6);
-        cout << b[i] << "      |" << '\n';
+        cout << " |";
+        cout.width(10);
+        cout << setprecision(5)
+            << b[i] << "  |" << '\n';
     }
+}
+
+void print_solution(double* x, int n) {
+    cout << "x = [ ";
+    for (int i = 0; i < n - 1; i++) {
+        cout << x[i] << ' ';
+    }
+    cout << x[n - 1] << "]\n";
 }
 
 //Заполнение системы с клавиатуры или случайно
 //(в зависимости от n)
-void request_system(double** &A, double* &b, double* &x, int& n)
+void request_system(double** &A, double* &b, int& n)
 {
     cout << "Введите размер системы n: ";
     cin >> n;
 
     A = init_matrix(n);
     b = new double[n];
-    x = new double[n];
 
     if (n <= 4)
     {
@@ -51,9 +79,8 @@ void request_system(double** &A, double* &b, double* &x, int& n)
     cout << "Матрица будет заполена автоматически.\n";
     srand((unsigned int)time(NULL));
     int range_min, range_max;
-    cout << "Введите минимальное значение: \n";
+    cout << "Укажите диапазон значений: \n";
     cin >> range_min;
-    cout << "Введите максимальное значение: \n";
     cin >> range_max;
 
     for (int i = 0; i < n; i++)
@@ -61,16 +88,17 @@ void request_system(double** &A, double* &b, double* &x, int& n)
         for (int j = 0; j < n; j++)
         {
             A[i][j] =
-                (int)((double)rand() / (RAND_MAX + 1) * (range_max + 1 - range_min) +
+                ((double)rand() / (RAND_MAX + 1) * (range_max + 1 - range_min) +
                     range_min);
         }
-        b[i] = (int)((double)rand() / (RAND_MAX + 1) * (range_max + 1 - range_min) +
+        b[i] = ((double)rand() / (RAND_MAX + 1) * (range_max + 1 - range_min) +
                     range_min);
     }
     if (n <= 10)
     {
         cout << "Успешно создана система:\n";
         print_system(A, b, n);
+        cout << "\n\n";
     }
     else
     {
@@ -80,13 +108,20 @@ void request_system(double** &A, double* &b, double* &x, int& n)
 }
 
 //Освобождение памяти от системы
-void destroy_system(double**& A, double*& b, double*& x, int n)
+void destroy_system(double** &A, double** &A1,
+    double*& x, double*& b, double*& b1, int n)
 {
     if (A != NULL) {
         for (int i = 0; i < n; i++)
             delete[] A[i];
         delete[] A;
         A = NULL;
+    }
+    if (A1 != NULL) {
+        for (int i = 0; i < n; i++)
+            delete[] A1[i];
+        delete[] A1;
+        A1 = NULL;
     }
     if (b != NULL) {
         delete[] b;
