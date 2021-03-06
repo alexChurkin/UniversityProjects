@@ -35,7 +35,9 @@ void gaussificate()
 	{
 		print_solution(x, n);
 		max_err = error_check(A1, x, b1, n);
+		cout << scientific;
 		cout << "Погрешность = " << max_err << "\n";
+		cout << fixed;
 	}
 	cout << "Что дальше?..\n";
 }
