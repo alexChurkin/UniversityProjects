@@ -16,7 +16,7 @@ bool gauss_solve(double** A, double* &x, double* b, int n)
         int maxJ = j;
         for (int i = j + 1; i < n; i++)
         {
-            if (A[maxJ][j] < A[i][j])
+            if (abs(A[maxJ][j]) < abs(A[i][j]))
                 maxJ = i;
         }
         if (j != maxJ) {

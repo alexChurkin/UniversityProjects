@@ -88,11 +88,11 @@ void request_system(double** &A, double* &b, int& n)
         for (int j = 0; j < n; j++)
         {
             A[i][j] =
-                ((double)rand() / (RAND_MAX + 1) * (range_max + 1 - range_min) +
-                    range_min);
+                (double)rand() / (RAND_MAX + 1) * (range_max + 1 - range_min) +
+                    range_min;
         }
-        b[i] = ((double)rand() / (RAND_MAX + 1) * (range_max + 1 - range_min) +
-                    range_min);
+        b[i] = (double)rand() / (RAND_MAX + 1) * (range_max + 1 - range_min) +
+                    range_min;
     }
     if (n <= 10)
     {
