@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 using namespace std;
 
@@ -25,6 +26,46 @@ double* copy_vector(double* b, int n)
     for (int i = 0; i < n; i++)
         b1[i] = b[i];
     return b1;
+}
+
+void save_to_file(double** A, double* b, int n) {
+    string name;
+    cout << "Укажите имя файла:\n";
+    cin >> name;
+
+    ofstream ofs;
+    ofs.open(name);
+    ofs << n << '\n';
+    for (int i = 0; i < n; i++)
+    {
+        ofs << left;
+        for (int j = 0; j < n; j++) {
+            ofs.width(20);
+            ofs << setprecision(15) << A[i][j] << ' ';
+        }
+        ofs << b[i] << '\n';
+    }
+    ofs.close();
+    cout << "Система успешно сохранена в файл " << name << "\n";
+}
+
+void load_from_file(double** &A, double* &b, int &n) {
+    string name;
+    cout << "Укажите имя файла:\n";
+    cin >> name;
+
+    ifstream ifs;
+    ifs.open(name);
+    ifs >> n;
+    A = init_matrix(n);
+    b = new double[n];
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+            ifs >> A[i][j];
+        ifs >> b[i];
+    }
 }
 
 //Вывод системы уравнений на экран

@@ -67,7 +67,7 @@ double error_check(double** A, double* x, double* b, int n)
         str_sum = 0.0;
         for (int j = 0; j < n; j++)
             str_sum += A[i][j] * x[j];
-
+        
         double diff = abs(str_sum - b[i]);
         if (diff > err)
             err = diff;
