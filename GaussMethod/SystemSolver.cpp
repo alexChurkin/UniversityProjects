@@ -24,7 +24,8 @@ bool gauss_solve(double** A, double* &x, double* b, int n)
             swap(b[j], b[maxJ]);
             cout << "> Смена строк "
                 << j << " и " << maxJ << '\n';
-            print_system(A, b, n);
+            if(n <= 10)
+                print_system(A, b, n);
             cout << "\n\n";
         }
         if (A[maxJ][j] == 0) {
@@ -42,7 +43,8 @@ bool gauss_solve(double** A, double* &x, double* b, int n)
             b[i] -= alpha * b[j];
         }
         cout << "> Прямой ход " << j + 1 << ":\n";
-        print_system(A, b, n);
+        if (n <= 10)
+            print_system(A, b, n);
         cout << "\n\n";
     }
 
