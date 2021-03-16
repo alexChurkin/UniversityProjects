@@ -66,6 +66,7 @@ void load_from_file(double** &A, double* &b, int &n) {
             ifs >> A[i][j];
         ifs >> b[i];
     }
+    ifs.close();
 }
 
 //Вывод системы уравнений на экран
