@@ -169,6 +169,10 @@ void destroy_system(double** &A, double** &A1,
         delete[] b;
         b = NULL;
     }
+    if (b1 != NULL) {
+        delete[] b1;
+        b1 = NULL;
+    }
     if (x != NULL) {
         delete[] x;
         x = NULL;
