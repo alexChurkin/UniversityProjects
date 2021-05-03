@@ -221,6 +221,9 @@ Vector& Vector::operator*=(double b)
 
 Vector& Vector::operator/=(double b)
 {
+    if(b == 0)
+        throw "Division by zero (b = 0)";
+
     for (int i = 0; i < n; i++)
         arr[i] /= b;
 
