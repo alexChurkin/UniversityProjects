@@ -4,7 +4,6 @@
 #include <clocale>
 #include <ctime>
 #include <cstring>
-#define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
 //Хранит информацию об ошибке для её дальнейшей обработки

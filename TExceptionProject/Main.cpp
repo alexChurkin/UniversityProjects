@@ -11,7 +11,7 @@ int main()
 {
     setlocale(LC_ALL, "russian");
     //v1 = (1, 2, 3)
-//v2 = (5, 5, 5)
+    //v2 = (5, 5, 5)
     Vector v1(3);
     Vector v2(3);
     v1[0] = 1;

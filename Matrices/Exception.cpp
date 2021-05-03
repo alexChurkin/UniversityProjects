@@ -1,11 +1,11 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <fstream>
 #include <clocale>
 #include <ctime>
 #include <cstring>
 #include "Exception.h"
-#define _CRT_SECURE_NO_WARNINGS
 using namespace std;
 
 Exception::Exception(const char* _file, const char* _func, int _line, const char* _desc)
@@ -44,7 +44,6 @@ Exception::Exception(const Exception& e)
 
 void Exception::print() const
 {
-	cout << "<<Выброшено исключение>>\n";
 	cout << "Файл: " << file << '\n';
 	cout << "Функция: " << func << '\n';
 	cout << "Номер строки: " << line << '\n';
@@ -53,7 +52,6 @@ void Exception::print() const
 
 ostream& operator<<(ostream& os, const Exception& e)
 {
-	os << "<<Выброшено исключение>>\n";
 	os << "Файл: " << e.file << '\n';
 	os << "Функция: " << e.func << '\n';
 	os << "Номер строки: " << e.line << '\n';

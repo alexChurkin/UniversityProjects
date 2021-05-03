@@ -17,14 +17,14 @@ public:
 
 	void resize(int _n);
 
-	TVector operator+(const TVector& b);
-	TVector operator-(const TVector& b);
-	T operator*(const TVector& b);
+	TVector operator+(const TVector& b) const;
+	TVector operator-(const TVector& b) const;
+	T operator*(const TVector& b) const;
 
-	TVector operator+(const T& b);
-	TVector operator-(const T& b);
-	TVector operator*(const T& b);
-	TVector operator/(const T& b);
+	TVector operator+(const T& b) const;
+	TVector operator-(const T& b) const;
+	TVector operator*(const T& b) const;
+	TVector operator/(const T& b) const;
 
 	TVector& operator=(const TVector& v);
 	TVector& operator+=(const TVector& b);
@@ -37,11 +37,60 @@ public:
 
 	T& operator[](int i);
 
-	friend TVector operator+(const T& a, const TVector& b);
-	friend TVector operator-(const T& a, const TVector& b);
-	friend TVector operator*(const T& a, const TVector& b);
-	friend ostream& operator<<(ostream& os, const TVector& v);
-	friend istream& operator>>(istream& is, TVector& v);
+	template <class K>
+	friend TVector operator+(const K& a, const TVector<K>& b)
+	{
+		TVector<K> result(b);
+		for (int i = 0; i < result.n; i++)
+		{
+			result.arr[i] += a;
+		}
+		return result;
+	}
+
+	template <class K>
+	friend TVector operator-(const K& a, const TVector<K>& b)
+	{
+		TVector<K> result(b);
+		for (int i = 0; i < result.n; i++)
+		{
+			result.arr[i] = a - result.arr[i];
+		}
+		return result;
+	}
+
+	template <class K>
+	friend TVector operator*(const K& a, const TVector<K>& b)
+	{
+		TVector<K> result(b);
+		for (int i = 0; i < result.n; i++)
+		{
+			result.arr[i] *= a;
+		}
+		return result;
+	}
+
+	template <class K>
+	friend ostream& operator<<(ostream& os, const TVector<K>& v)
+	{
+		os << '(';
+		for (int i = 0; i < v.n - 1; i++)
+		{
+			os << v.arr[i] << ", ";
+		}
+		os << v.arr[v.n - 1] << ')';
+		return os;
+	}
+
+	template <class K>
+	friend istream& operator>>(istream& is, TVector<K>& v)
+	{
+		for (int i = 0; i < v.n; i++)
+		{
+			is >> v.arr[i];
+		}
+		return is;
+	}
 };
 
 template <class T>
@@ -95,7 +144,7 @@ void TVector<T>::resize(int _n)
 }
 
 template <class T>
-TVector<T> TVector<T>::operator+(const TVector<T>& b)
+TVector<T> TVector<T>::operator+(const TVector<T>& b) const
 {
 	if (n != b.n)
 		throw Exception(__FILE__, __FUNCTION__,
@@ -108,7 +157,7 @@ TVector<T> TVector<T>::operator+(const TVector<T>& b)
 }
 
 template <class T>
-TVector<T> TVector<T>::operator-(const TVector<T>& b)
+TVector<T> TVector<T>::operator-(const TVector<T>& b) const
 {
 	if (n != b.n)
 		throw Exception(__FILE__, __FUNCTION__,
@@ -121,7 +170,7 @@ TVector<T> TVector<T>::operator-(const TVector<T>& b)
 }
 
 template <class T>
-T TVector<T>::operator*(const TVector<T>& b)
+T TVector<T>::operator*(const TVector<T>& b) const
 {
 	if (n != b.n)
 		throw Exception(__FILE__, __FUNCTION__,
@@ -134,7 +183,7 @@ T TVector<T>::operator*(const TVector<T>& b)
 }
 
 template <class T>
-TVector<T> TVector<T>::operator+(const T& b)
+TVector<T> TVector<T>::operator+(const T& b) const
 {
 	TVector<T> result(n);
 	for (int i = 0; i < n; i++)
@@ -143,7 +192,7 @@ TVector<T> TVector<T>::operator+(const T& b)
 }
 
 template <class T>
-TVector<T> TVector<T>::operator-(const T& b)
+TVector<T> TVector<T>::operator-(const T& b) const
 {
 	TVector<T> result(n);
 	for (int i = 0; i < n; i++)
@@ -152,7 +201,7 @@ TVector<T> TVector<T>::operator-(const T& b)
 }
 
 template <class T>
-TVector<T> TVector<T>::operator*(const T& b)
+TVector<T> TVector<T>::operator*(const T& b) const
 {
 	TVector<T> result(n);
 	for (int i = 0; i < n; i++)
@@ -161,7 +210,7 @@ TVector<T> TVector<T>::operator*(const T& b)
 }
 
 template <class T>
-TVector<T> TVector<T>::operator/(const T& b)
+TVector<T> TVector<T>::operator/(const T& b) const
 {
 	if (b == NULL)
 		throw Exception(__FILE__, __FUNCTION__,
@@ -266,59 +315,4 @@ T& TVector<T>::operator[](int i)
 	else
 		throw Exception(__FILE__, __FUNCTION__,
 			__LINE__, "Index out of bounds");
-}
-
-template <class T>
-TVector<T> operator+(const T& a, const TVector<T>& b)
-{
-	TVector<T> result(b);
-	for (int i = 0; i < result.n; i++)
-	{
-		result.arr[i] += a;
-	}
-	return result;
-}
-
-template <class T>
-TVector<T> operator-(const T& a, const TVector<T>& b)
-{
-	TVector<T> result(b);
-	for (int i = 0; i < result.n; i++)
-	{
-		result.arr[i] = a - result.arr[i];
-	}
-	return result;
-}
-
-template <class T>
-TVector<T> operator*(const T& a, const TVector<T>& b)
-{
-	TVector<T> result(b);
-	for (int i = 0; i < result.n; i++)
-	{
-		result.arr[i] *= a;
-	}
-	return result;
-}
-
-template <class T>
-ostream& operator<<(ostream& os, const TVector<T>& v)
-{
-	os << '(';
-	for (int i = 0; i < v.n - 1; i++)
-	{
-		os << v.arr[i] << ", ";
-	}
-	os << v.arr[v.n - 1] << ')';
-	return os;
-}
-
-template <class T>
-istream& operator>>(istream& is, TVector<T>& v)
-{
-	for (int i = 0; i < v.n; i++)
-	{
-		is >> v.arr[i];
-	}
-	return is;
 }
