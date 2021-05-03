@@ -3,7 +3,7 @@
 #include <clocale>
 #include <ctime>
 #include <string>
-#include "TVector.h"
+#include "TMatrix.h"
 using namespace std;
 
 void test_vector()
@@ -133,6 +133,8 @@ void test_vector()
 
 void test_matrix()
 {
+    TMatrix<int> t1(3);
+    t1[0][0] = 1;
 
 }
 
@@ -140,7 +142,7 @@ int main()
 {
     setlocale(LC_ALL, "russian");
 
-    test_vector();
+    //test_vector();
     test_matrix();
     return 0;
 }
