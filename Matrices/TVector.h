@@ -15,6 +15,7 @@ public:
 	TVector(const TVector& v);
 	~TVector();
 
+	int getSize() const;
 	void resize(int _n);
 
 	TVector operator+(const TVector& b) const;
@@ -37,10 +38,9 @@ public:
 
 	T& operator[](int i);
 
-	template <class K>
-	friend TVector operator+(const K& a, const TVector<K>& b)
+	friend TVector operator+(const T& a, const TVector<T>& b)
 	{
-		TVector<K> result(b);
+		TVector<T> result(b);
 		for (int i = 0; i < result.n; i++)
 		{
 			result.arr[i] += a;
@@ -48,10 +48,9 @@ public:
 		return result;
 	}
 
-	template <class K>
-	friend TVector operator-(const K& a, const TVector<K>& b)
+	friend TVector operator-(const T& a, const TVector<T>& b)
 	{
-		TVector<K> result(b);
+		TVector<T> result(b);
 		for (int i = 0; i < result.n; i++)
 		{
 			result.arr[i] = a - result.arr[i];
@@ -59,10 +58,9 @@ public:
 		return result;
 	}
 
-	template <class K>
-	friend TVector operator*(const K& a, const TVector<K>& b)
+	friend TVector operator*(const T& a, const TVector<T>& b)
 	{
-		TVector<K> result(b);
+		TVector<T> result(b);
 		for (int i = 0; i < result.n; i++)
 		{
 			result.arr[i] *= a;
@@ -70,8 +68,7 @@ public:
 		return result;
 	}
 
-	template <class K>
-	friend ostream& operator<<(ostream& os, const TVector<K>& v)
+	friend ostream& operator<<(ostream& os, const TVector<T>& v)
 	{
 		os << '(';
 		for (int i = 0; i < v.n - 1; i++)
@@ -82,8 +79,7 @@ public:
 		return os;
 	}
 
-	template <class K>
-	friend istream& operator>>(istream& is, TVector<K>& v)
+	friend istream& operator>>(istream& is, TVector<T>& v)
 	{
 		for (int i = 0; i < v.n; i++)
 		{
@@ -102,6 +98,9 @@ TVector<T>::TVector(int _n)
 
 	n = _n;
 	arr = new T[n];
+
+	for (int i = 0; i < n; i++)
+		arr[i] = NULL;
 }
 
 template <class T>
@@ -117,6 +116,12 @@ template <class T>
 TVector<T>::~TVector()
 {
 	delete[] arr;
+}
+
+template <class T>
+int TVector<T>::getSize() const
+{
+	return n;
 }
 
 template <class T>

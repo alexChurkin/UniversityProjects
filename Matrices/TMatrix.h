@@ -1,9 +1,10 @@
 #pragma once
 #include "TVector.h"
+#include <iomanip>
 
 //Класс квадратной матрицы
 //Матрица - массив строк
-//Одна её строка - это вектор
+//Одна её строка - вектор
 template <class T>
 class TMatrix {
 private:
@@ -11,9 +12,11 @@ private:
 	TVector<T>* pMatrix;
 
 public:
-	TMatrix(int _size = 5);
+	TMatrix(int _size = 3);
 	TMatrix(const TMatrix<T>& m);
 	~TMatrix();
+
+	int getSize() const;
 
 	TVector<T>& operator[](int pos);
 
@@ -36,60 +39,53 @@ public:
 	TMatrix& operator*=(const T& b);
 	TMatrix& operator/=(const T& b);
 
-	template <class K>
-	friend TMatrix operator+(const K& a, const TMatrix<K>& b)
+	TVector<T> operator*(const TVector<T>& b) const;
+
+	friend TMatrix operator+(const T& a, const TMatrix<T>& b)
 	{
-		TMatrix<K> result(b);
+		TMatrix<T> result(b);
 		for (int i = 0; i < result.size; i++)
-			result.pMatrix[i] += b;
+			result.pMatrix[i] += a;
 		return result;
 	}
 
-	template <class K>
-	friend TMatrix operator-(const K& a, const TMatrix<K>& b)
+	friend TMatrix operator-(const T& a, const TMatrix<T>& b)
 	{
-		TMatrix<K> result(b);
+		TMatrix<T> result(b);
 		for (int i = 0; i < result.size; i++)
-			result.pMatrix[i] = b - result.pMatrix[i];
+			result.pMatrix[i] = a - result.pMatrix[i];
 		return result;
 	}
 
-	template <class K>
-	friend TMatrix operator*(const K& a, const TMatrix<K>& b)
+	friend TMatrix operator*(const T& a, const TMatrix<T>& b)
 	{
-		TMatrix<K> result(b);
+		TMatrix<T> result(b);
 		for (int i = 0; i < result.size; i++)
-			result.pMatrix[i] *= b;
+			result.pMatrix[i] *= a;
 		return result;
 	}
 
-	//Умножение матрицы на вектор
-	template <class K>
-	friend TVector<K> operator*(const TMatrix<K>& a, const TVector<K>& b)
+	friend ostream& operator<<(ostream& os, const TMatrix<T>& m)
 	{
-
-	}
-
-	//Умножение матрицы на вектор с записью результата в текущую матрицу
-	template <class K>
-	friend TVector<K> operator*=(const TMatrix<K>& a, const TVector<K>& b)
-	{
-
-	}
-
-	template <class K>
-	friend ostream& operator<<(ostream& os, const TMatrix<K>& m)
-	{
-		for (int i = 0; i < size; i++)
-			os << pMatrix[i];
+		for (int i = 0; i < m.size; i++)
+		{
+			os << "|     ";
+			for (int j = 0; j < m.size - 1; j++)
+			{
+				os << fixed << setprecision(5) << setw(12) << left
+					<< m.pMatrix[i][j] << ' ';
+			}
+			os << fixed << left << setw(12)
+				<< m.pMatrix[i][m.size - 1];
+			os << " |" << '\n';
+		}
 		return os;
 	}
 
-	template <class K>
-	friend istream& operator>>(istream& is, TMatrix<K>& m)
+	friend istream& operator>>(istream& is, TMatrix<T>& m)
 	{
-		for (int i = 0; i < size; i++)
-			is >> pMatrix[i];
+		for (int i = 0; i < m.size; i++)
+			is >> m.pMatrix[i];
 		return is;
 	}
 };
@@ -97,7 +93,7 @@ public:
 template <class T>
 TMatrix<T>::TMatrix(int _size)
 {
-	if (size <= 0)
+	if (_size <= 0)
 		throw Exception(__FILE__, __FUNCTION__,
 			__LINE__, "Matrix size cannot be <= 0");
 
@@ -127,9 +123,15 @@ TMatrix<T>::~TMatrix()
 }
 
 template <class T>
+int TMatrix<T>::getSize() const
+{
+	return size;
+}
+
+template <class T>
 TVector<T>& TMatrix<T>::operator[](int pos)
 {
-	if (pos <= 0 || pos >= size)
+	if (pos < 0 || pos >= size)
 		throw Exception(__FILE__, __FUNCTION__,
 			__LINE__, "Row index out of bounds");
 	return pMatrix[pos];
@@ -144,7 +146,7 @@ TMatrix<T> TMatrix<T>::operator+(const TMatrix<T>& b) const
 
 	TMatrix result(*this);
 	for (int i = 0; i < b.size; i++)
-			result.pMatrix[i] += b.pMatrix[i];
+		result.pMatrix[i] += b.pMatrix[i];
 	return result;
 }
 
@@ -157,7 +159,7 @@ TMatrix<T> TMatrix<T>::operator-(const TMatrix<T>& b) const
 
 	TMatrix result(*this);
 	for (int i = 0; i < b.size; i++)
-			result.pMatrix[i] -= b.pMatrix[i];
+		result.pMatrix[i] -= b.pMatrix[i];
 	return result;
 }
 
@@ -222,7 +224,7 @@ TMatrix<T> TMatrix<T>::operator*(const T& b) const
 template <class T>
 TMatrix<T> TMatrix<T>::operator/(const T& b) const
 {
-	if(b == NULL)
+	if (b == NULL)
 		throw Exception(__FILE__, __FUNCTION__,
 			__LINE__, "Division by zero");
 
@@ -253,7 +255,7 @@ TMatrix<T>& TMatrix<T>::operator+=(const TMatrix<T>& b)
 {
 	if (size != b.size)
 		throw Exception(__FILE__, __FUNCTION__,
-			__LINE__, "Vectors have different dimensions");
+			__LINE__, "Matrices have different dimensions");
 
 	for (int i = 0; i < size; i++)
 		pMatrix[i] += b.pMatrix[i];
@@ -265,7 +267,7 @@ TMatrix<T>& TMatrix<T>::operator-=(const TMatrix<T>& b)
 {
 	if (size != b.size)
 		throw Exception(__FILE__, __FUNCTION__,
-			__LINE__, "Vectors have different dimensions");
+			__LINE__, "Matrices have different dimensions");
 
 	for (int i = 0; i < size; i++)
 		pMatrix[i] -= b.pMatrix[i];
@@ -340,4 +342,19 @@ TMatrix<T>& TMatrix<T>::operator/=(const T& b)
 	for (int i = 0; i < size; i++)
 		pMatrix[i] /= b;
 	return *this;
+}
+
+template <class T>
+TVector<T> TMatrix<T>::operator*(const TVector<T>& b) const
+{
+	if (size != b.getSize())
+		throw Exception(__FILE__, __FUNCTION__,
+			__LINE__, "Matrix and vector have different dimensions");
+
+	TVector<T> result(size);
+	for (int i = 0; i < size; i++)
+	{
+		result[i] = pMatrix[i] * b;
+	}
+	return result;
 }
