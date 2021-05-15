@@ -45,13 +45,33 @@ void request_system(Rational**& A, Rational*& b, int n)
     A = init_matrix(n);
     b = new Rational[n];
 
-    cout << "¬ведите уравнени€:\n";
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-            cin >> A[i][j];
-        cin >> b[i];
+    cout << "–учной ввод? (+ или -)\n";
+    char c;
+    cin >> c;
+    if (c == '+') {
+        cout << "¬ведите уравнени€:\n";
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+                cin >> A[i][j];
+            cin >> b[i];
+        }
     }
+    else {
+        cout << "¬ведите минимальное и максимальное:\n";
+        Rational min, max;
+        cin >> min >> max;
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++) {
+                A[i][j] = Rational(min, max);
+            }
+            b[i] = Rational(min, max);
+        }
+        cout << "—генерирована система:\n";
+        print_system(A, b, n);
+    }
+
     return;
 }
 

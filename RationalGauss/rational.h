@@ -14,6 +14,7 @@ private:
 
 public:
     Rational(int m = 0, unsigned int n = 1);
+    Rational(Rational min, Rational max);
 
     void setM(int m);
     int getM();

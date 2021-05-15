@@ -34,6 +34,18 @@ Rational::Rational(int m, unsigned int n)
     gcd_optimize();
 }
 
+Rational::Rational(Rational min, Rational max)
+{
+    if (min > max) swap(min, max);
+
+    int mmin = min.m * max.n * 5;
+    int mmax = max.m * min.n * 5;
+
+    m = (double)rand() / (RAND_MAX + 1) * (mmax + 1 - mmin) + mmin;
+    n = min.n * max.n * 5;
+    gcd_optimize();
+}
+
 void Rational::setM(int m)
 {
     this->m = m;
